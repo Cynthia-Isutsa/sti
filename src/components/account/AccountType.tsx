@@ -24,7 +24,7 @@ export default function SignIn({ code }: Props) {
   });
 
   const { user } = useUser();
-  console.log({ user });
+
   const router = useRouter();
 
   function classNames(...classes: string[]) {

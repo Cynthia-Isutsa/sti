@@ -19,12 +19,11 @@ const Index = () => {
   const router = useRouter();
 
   const { user } = useUser();
-  console.log(router, "user");
 
   const { bidDetails, bidDetailsError, bidDetailsLoading } = FetchBidDetails(
     router?.query?.submission_id
   );
-  console.log(bidDetails, "bidDetails");
+
   const updateMatch = async () => {
     if (!router.isReady) {
       console.warn("Router not ready yet");
@@ -50,7 +49,6 @@ const Index = () => {
         expert_email: bidDetails?.data?.[0]?.expert_email,
         expert_id: bidDetails?.data?.[0]?.expert_id,
       });
-      console.log("Document updated successfully.");
     } catch (error) {
       console.error("Error updating document:", error);
     }
@@ -64,7 +62,6 @@ const Index = () => {
     }
     return "Navigation failed.";
   }
-
 
   return (
     <Main

@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { useUser } from "@clerk/nextjs";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -14,19 +13,9 @@ const ReviewCard = () => {
   const { user } = useUser();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  console.log(userData, "userData");
-  console.log(user, "user");
-
-  // const savetoDb = async () => {
-  //
-  //   console.log(docRef.id);
-  //   router.push("/submissions");
-  // };
 
   const savetoDb = async () => {
-    setIsSubmitting(true); // Set to true when the submission starts
-
-    // Ensure that downloadUrls exists and contains only defined values
+    setIsSubmitting(true);
     const sanitizedDownloadUrls = userData.downloadUrls
       ? userData.downloadUrls.filter((url: undefined) => url !== undefined)
       : [];
@@ -87,12 +76,12 @@ const ReviewCard = () => {
                     {userData.request_title}
                   </div>
                   <div className="mr-4 flex justify-end">
-                    <Image
+                    {/* <Image
                       src="/assets/images/dash/edit.svg"
                       alt="Picture of the author"
                       width={29}
                       height={29}
-                    />
+                    /> */}
                   </div>
                 </div>
                 <div className="text-xs font-normal text-slate-600">
@@ -113,12 +102,12 @@ const ReviewCard = () => {
                       {userData.request_details}
                     </div>
                     <div className="mr-4 flex justify-end">
-                      <Image
+                      {/* <Image
                         src="/assets/images/dash/edit.svg"
                         alt="Picture of the author"
                         width={29}
                         height={29}
-                      />
+                      /> */}
                     </div>
                   </div>
                   <div className="text-xs font-normal text-slate-600">
@@ -141,12 +130,12 @@ const ReviewCard = () => {
                       {userData.area_of_expertise}
                     </div>
                     <div className="mr-4 flex justify-end">
-                      <Image
+                      {/* <Image
                         src="/assets/images/dash/edit.svg"
                         alt="Picture of the author"
                         width={29}
                         height={29}
-                      />
+                      /> */}
                     </div>
                   </div>
                   <div className="text-xs font-normal text-slate-600">
@@ -168,12 +157,12 @@ const ReviewCard = () => {
                         : userData.sector_focus}
                     </div>
                     <div className="mr-4 flex justify-end">
-                      <Image
+                      {/* <Image
                         src="/assets/images/dash/edit.svg"
                         alt="Picture of the author"
                         width={29}
                         height={29}
-                      />
+                      /> */}
                     </div>
                   </div>
                   <div className="text-xs font-normal text-slate-600">

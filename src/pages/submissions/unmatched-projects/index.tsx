@@ -36,9 +36,9 @@ const SubmissionsIndex = () => {
             <Tabs.Item active={true} title="All">
               <UnmatchedProjects />
             </Tabs.Item>
-            <Tabs.Item title="Saved">
+            {/* <Tabs.Item title="Saved">
               Saved Content is under development
-            </Tabs.Item>
+            </Tabs.Item> */}
           </Tabs.Group>
         </div>
       </div>

@@ -45,7 +45,7 @@ const DescriptionCard = ({ fileUrls }: DataProps) => {
   }
 
   function downloadResource(downloadUrl: string, filename: string): void {
-    console.log(downloadUrl);
+   
     const downloadFile = async () => {
       try {
         const response = await fetch(downloadUrl, { mode: "no-cors" });

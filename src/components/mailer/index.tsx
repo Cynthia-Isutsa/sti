@@ -29,15 +29,6 @@ const RequestMailer = ({
   const { user } = useUser();
   const [submitted, setSubmitted] = useState(false);
 
-  console.log({
-    profileName,
-    email,
-    request_title,
-    researcher_email,
-    researcher_id,
-    request_details,
-  });
-
   const handleInvite = async () => {
     setSubmitted(true);
     await addDoc(collection(db, "mail"), {

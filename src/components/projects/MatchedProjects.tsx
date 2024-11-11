@@ -1,6 +1,6 @@
 // import { getAuth } from "firebase/auth";
 import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import React from "react";
 
 import MainCard from "@/components/cards/submissions/MainCard";
@@ -11,13 +11,11 @@ import CardSkeleton from "../utils/CardSkeleton";
 
 const AllProjects = () => {
   const { user } = useUser();
-  const router = useRouter();
-  console.log(router, "router");
-  console.log(user, "user");
+  // const router = useRouter();
+
   const { projectMatched, isLoading, isError } = useMatchedSubmissions(
     user?.id
   );
-  console.log(projectMatched, "projectSubmission");
   return (
     <div className="block gap-4 md:grid md:grid-flow-row-dense md:grid-cols-4 ">
       <div className="col-span-3">
