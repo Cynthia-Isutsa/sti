@@ -119,7 +119,47 @@ const OverviewCard = ({ getDone }: any) => {
         <div className="mt-3 mb-1 px-5 text-xl font-bold text-slate-900 sm:text-2xl">
           Additional Details
         </div>
+
         <div className="relative mx-5 items-center self-center overflow-hidden text-slate-600 focus-within:text-gray-400">
+          <div className="px-2">
+            <label
+              htmlFor="sector_focus"
+              className="block text-base font-medium text-slate-900"
+            >
+              Area of Focus
+            </label>
+            <div className="mt-1 flex rounded-md shadow-sm">
+              <select
+                name="sector_focus"
+                id="sector_focus"
+                className="block w-full flex-1 rounded-2xl border-2 border-slate-300 font-semibold text-slate-600 focus:border-indigo-500 focus:ring-indigo-500 sm:text-base"
+                placeholder=""
+                value={userData.sector_focus}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled selected hidden>
+                  Select an option
+                </option>
+                <option value="Agriculture and extractives">
+                  Agriculture and extractives
+                </option>
+                <option value="Manufacturing">Manufacturing</option>
+                <option value="Services">Services</option>
+                <option value="IT and/or research/ knowledge management">
+                  IT and/or research/ knowledge management
+                </option>
+                <option value="STI policy generally">
+                  STI policy generally
+                </option>
+                <option value="Gender">Gender</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div className="mt-2 text-xs font-normal text-slate-700">
+              Area of focus of your request i.e Agriculture, Manufacturing.
+            </div>
+          </div>
           <div className="mb-4 text-xs font-normal text-gray-600">
             This information will be displayed publicly on through the STI
             Policy Helpdesk domain.
@@ -175,46 +215,7 @@ const OverviewCard = ({ getDone }: any) => {
                         category.
                       </div>
                     </div> */}
-                    <div className="px-2">
-                      <label
-                        htmlFor="sector_focus"
-                        className="block text-base font-medium text-slate-900"
-                      >
-                        Area of Focus
-                      </label>
-                      <div className="mt-1 flex rounded-md shadow-sm">
-                        <select
-                          name="sector_focus"
-                          id="sector_focus"
-                          className="block w-full flex-1 rounded-2xl border-2 border-slate-300 font-semibold text-slate-600 focus:border-indigo-500 focus:ring-indigo-500 sm:text-base"
-                          placeholder=""
-                          value={userData.sector_focus}
-                          onChange={handleChange}
-                          required
-                        >
-                          <option value="" disabled selected hidden>
-                            Select an option
-                          </option>
-                          <option value="Agriculture and extractives">
-                            Agriculture and extractives
-                          </option>
-                          <option value="Manufacturing">Manufacturing</option>
-                          <option value="Services">Services</option>
-                          <option value="IT and/or research/ knowledge management">
-                            IT and/or research/ knowledge management
-                          </option>
-                          <option value="STI policy generally">
-                            STI policy generally
-                          </option>
-                          <option value="Gender">Gender</option>
-                          <option value="Other">Other</option>
-                        </select>
-                      </div>
-                      <div className="mt-2 text-xs font-normal text-slate-700">
-                        Area of focus of your request i.e Agriculture,
-                        Manufacturing.
-                      </div>
-                    </div>
+
                     {userData.sector_focus === "Other" ? (
                       <div className="px-2">
                         <label

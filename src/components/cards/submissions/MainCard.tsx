@@ -8,7 +8,6 @@ interface DataProps {
 }
 
 const MainCard = ({ submissions, path }: DataProps) => {
-  console.log(submissions, "submissions");
   const router = useRouter();
   const { user } = useUser();
   const getDone = (id: any, project_id: any) => {
@@ -33,7 +32,7 @@ const MainCard = ({ submissions, path }: DataProps) => {
     <div>
       {submissions?.data
         ?.slice()
-        .sort((a, b) => {
+        .sort((a: any, b: any) => {
           // Safely access the timestamp and provide a fallback value of 0
           const timestampA = a.timestamp?.seconds ?? 0;
           const timestampB = b.timestamp?.seconds ?? 0;
@@ -62,7 +61,7 @@ const MainCard = ({ submissions, path }: DataProps) => {
                     ? feed.researcher_name
                     : feed.expert_name}{" "}
                 </span>{" "}
-                for <span>{feed?.duration}</span>
+                for <span>{feed?.duration}</span> day(s)
                 <span>
                   {" "}
                   {feed.cost > 0 ? ` at $${feed.cost}` : " with no amount set"}
@@ -83,7 +82,7 @@ const MainCard = ({ submissions, path }: DataProps) => {
                     ? feed.researcher_email
                     : feed.expert_email}{" "}
                 </span>{" "}
-                for <span>{feed?.duration}</span>
+                for <span>{feed?.duration}</span> day (s)
                 <span>
                   {" "}
                   {feed.cost > 0 ? ` at $${feed.cost}` : " with no amount set"}
@@ -154,12 +153,12 @@ const MainCard = ({ submissions, path }: DataProps) => {
             <div className="mx-3 mb-3 px-2 text-base text-slate-700 line-clamp-3"></div>
 
             <div className="mx-3 flex justify-start px-2">
-              <button
+              {/* <button
                 type="button"
                 className="mr-2 mb-2 rounded-full border border-slate-200 bg-gray-100 py-[6px] px-5 text-sm text-slate-600 hover:bg-slate-100 hover:text-blue-800"
               >
                 {feed.area_of_expertise}
-              </button>
+              </button> */}
 
               <button
                 type="button"

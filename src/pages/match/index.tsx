@@ -25,7 +25,6 @@ const Index = () => {
     useState<boolean>(false);
   const [researcherError, setResearcherError] = useState<string | null>(null);
 
-  console.log(user, router, "user");
 
   const { submissionDetails, isLoading, isError } = useSubmissionDetails(
     router.query.request?.toString() || ""
