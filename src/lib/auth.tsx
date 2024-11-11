@@ -49,6 +49,7 @@ export const AuthContextProvider = ({
   const logout = async () => {
     setUser(null);
     await signOut(auth);
+    window.location.href = "/";
   };
 
   return (

@@ -24,6 +24,12 @@ const Index = () => {
     FetchInviteDetails(router?.query?.submission_id);
 
   const updateMatch = async () => {
+    const projectId = router.query.project_id?.toString();
+
+    if (!projectId) {
+      console.error("No valid project ID found");
+      return; // Exit if projectId is missing or invalid
+    }
     const referenceData = doc(
       db,
       "submissions",

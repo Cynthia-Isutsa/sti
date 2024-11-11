@@ -22,6 +22,8 @@ const Index = () => {
     router?.query?.submission_id
   );
 
+  console.log("submissionDetails", submissionDetails);
+
   function handleMatching(): string {
     const expertHref = `/match?request=${router?.query?.submission_id}`;
     return user?.unsafeMetadata.data === "expert"
@@ -81,6 +83,18 @@ const Index = () => {
               parentLink="Home"
               currentLink="Submission Description"
             />
+            <p className="mx-28 text-sm text-indigo-700">
+              Budget:{" "}
+              {submissionDetail.estimated_cost
+                ? `$${submissionDetail.estimated_cost}`
+                : "flexible budget"}
+            </p>
+            <p className="mx-28 text-sm text-indigo-700">
+              Estimated Time (Days):{" "}
+              {submissionDetail.aproximate_days
+                ? `${submissionDetail.aproximate_days}`
+                : "flexible"}
+            </p>
 
             <div className="mt-8 grid grid-cols-4 gap-6 border-t px-20 py-10">
               <div className="col-span-3">
@@ -91,8 +105,8 @@ const Index = () => {
 
                   <div className="prose-sm cursor-pointer text-sm text-slate-700">
                     <DescriptionCard
-                      details={submissionDetail.request_details}
-                    ></DescriptionCard>
+                      details={submissionDetail?.request_details}
+                    />
                   </div>
                 </div>
                 <div className="border-t py-6">

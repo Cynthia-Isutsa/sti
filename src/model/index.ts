@@ -45,6 +45,18 @@ export const useProjectSubmissions = (researcherId: any) => {
   };
 };
 
+export const useMatchedSubmissions = (expertId: any) => {
+  const { data, error, isLoading } = useSWR(
+    `/api/matched-project/${expertId}`,
+    fetcher
+  );
+  return {
+    projectMatched: data,
+    isLoading,
+    isError: error,
+  };
+};
+
 export const useAccount = (uid: any) => {
   const { data, error, isLoading } = useSWR(`/api/account/${uid}`, fetcher);
   return {
@@ -71,6 +83,14 @@ export const useResearcher = (uid: any) => {
     researcherError: error,
   };
 };
+export const useUsers = (uid: any) => {
+  const { data, error, isLoading } = useSWR(`/api/users/${uid}`, fetcher);
+  return {
+    userData: data,
+    userLoading: isLoading,
+    userError: error,
+  };
+};
 
 export const FetchBiddedProjects = (uid: any) => {
   const { data, error, isLoading } = useSWR(
@@ -93,9 +113,18 @@ export const FetchMyBids = (uid: any) => {
   };
 };
 
-export const FetchInvitedProjects = (uid: any) => {
+export const FetchBidMails = () => {
+  const { data, error, isLoading } = useSWR(`/api/mail`, fetcher);
+  return {
+    bidsmails: data,
+    mailsLoading: isLoading,
+    mailsError: error,
+  };
+};
+
+export const FetchInvitedProjects = (expertId: any) => {
   const { data, error, isLoading } = useSWR(
-    `/api/invited-projects/${uid}`,
+    `/api/invited-projects/${expertId}`,
     fetcher
   );
   return {

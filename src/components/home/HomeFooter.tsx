@@ -4,7 +4,7 @@ const HomeHeader = () => {
       <footer className="mx-auto mt-12 max-w-screen-xl rounded-lg bg-white px-6 shadow-lg md:px-12 xl:px-6">
         <div className="mx-auto w-full max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
           <span className="text-sm font-bold text-gray-600 sm:text-center">
-            © 2023.{" "}
+            © {new Date().getFullYear()}.{" "}
             <a href="https://flowbite.com/" className="hover:underline">
               STI Policy Helpdesk
             </a>

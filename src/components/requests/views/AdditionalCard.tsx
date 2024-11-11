@@ -98,6 +98,14 @@ const OverviewCard = ({ getDone }: any) => {
     }
   }, [userData]);
 
+  // useEffect(() => {
+  //   if (!isEmpty(userData.sector_focus) && files.length > 0) {
+  //     getDone(true);
+  //   } else {
+  //     getDone(false);
+  //   }
+  // }, [userData, files]);
+
   const savetoState = async (e: any) => {
     e.preventDefault();
     if (download.length > 0) {

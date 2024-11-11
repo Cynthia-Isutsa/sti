@@ -1,7 +1,7 @@
 /* eslint-disable func-names */
 /* eslint-disable object-shorthand */
 import { useUser } from "@clerk/nextjs";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import Link from "next/link";
 import router from "next/router";
 import { useState } from "react";
@@ -15,34 +15,49 @@ interface Props {
   request_title: string;
   researcher_email: string;
   request_details: string;
+  researcher_id: string;
 }
 
 const RequestMailer = ({
   profileName,
   email,
-  researcher_name,
   request_title,
   researcher_email,
+  researcher_id,
   request_details,
 }: Props) => {
   const { user } = useUser();
   const [submitted, setSubmitted] = useState(false);
 
+  console.log({
+    profileName,
+    email,
+    request_title,
+    researcher_email,
+    researcher_id,
+    request_details,
+  });
+
   const handleInvite = async () => {
     setSubmitted(true);
     await addDoc(collection(db, "mail"), {
       to: user?.unsafeMetadata.data !== "expert" ? email : researcher_email,
+      bid: user?.unsafeMetadata.data === "expert",
+      invite: user?.unsafeMetadata.data !== "expert",
+      from: user?.unsafeMetadata.data !== "expert" ? researcher_email : email,
+      // userId:  user?.unsafeMetadata.data !== "expert" ? researcher_id : user?.id,
+      timestamp: serverTimestamp(),
       template: {
         name: "mainTemplate",
         data: {
           main:
             user?.unsafeMetadata.data === "expert"
               ? `${profileName} has offered to help`
-              : `${researcher_name} is requesting for your help`,
+              : `${researcher_id} is requesting for your help`,
           subject:
             user?.unsafeMetadata.data === "expert"
               ? `${profileName} has offered to help you with, ${request_title}`
-              : `${researcher_name} is requesting for your help with, ${request_title}`,
+              : `${researcher_id} is requesting for your help with, ${request_title}`,
           body: `${request_details}. You can proceed by visiting the link below to take you to the STI Policy Help Desk Dashboard. Signin with your STI Policy Help Desk account. If you don't agree to their request/offer you are free to decline`,
         },
       },
@@ -57,7 +72,7 @@ const RequestMailer = ({
         <div className="mt-3 mb-1 text-xl font-bold text-slate-900 sm:text-2xl">
           {user?.unsafeMetadata.data !== "expert"
             ? `Get Help From ${profileName}`
-            : `Offer Help to ${researcher_name}`}
+            : `Offer Help  for ${request_title}`}
         </div>
         <div className="relative items-center self-center overflow-hidden text-slate-600 focus-within:text-gray-400">
           <div className="mb-4 text-xs font-normal text-gray-600">

@@ -20,19 +20,19 @@ const counselor = [
     current: false,
   },
   { name: "Experts Profile", href: "/expert-profile", current: false },
-  // { name: "My Invites", href: "/my-invites", current: false },
-  // { name: "Bidded Projects", href: "/bidded-projects", current: false },
-  // { name: "Matched Projects", href: "/project", current: false },
-  { name: "Contact", href: "/contact", current: false },
+  { name: "My Invites", href: "/my-invites", current: false },
+  { name: "Bidded Projects", href: "/bidded-projects", current: false },
+  { name: "Matched Projects", href: "/project", current: false },
+  // { name: "Contact", href: "/contact", current: false },
 ];
 
 const expert = [
   { name: "Work Requests", href: "/submissions", current: true },
   { name: "My Profile", href: "/professional-profile/create", current: true },
-  // { name: "My Bids", href: "/my-bids", current: false },
-  // { name: "Invited Work Requests", href: "/invited-projects", current: false },
-  // { name: "Matched Projects", href: "/project", current: false },
-  { name: "Contact", href: "/contact", current: false },
+  { name: "My Bids", href: "/my-bids", current: false },
+  { name: "Invited Work Requests", href: "/invited-projects", current: false },
+  { name: "Matched Projects", href: "/matched-projects", current: false },
+  // { name: "Contact", href: "/contact", current: false },
 ];
 
 interface Props {
@@ -110,6 +110,7 @@ const TopNavBar = ({ currentTab }: Props) => {
                     },
                     userProfile: { variables: { fontFamily: "Inter" } },
                   }}
+                  afterSignOutUrl="/sign-in"
                 />
               </SignedIn>
               <SignedOut>
