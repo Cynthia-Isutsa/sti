@@ -124,7 +124,7 @@ const TitleDescriptionCard = ({ getDone }: any) => {
                     htmlFor="aproximate_days"
                     className="block text-base font-medium text-slate-900"
                   >
-                    Estimated Time of Completion (Days)
+                    Estimated Time of Completion (Day(s))
                   </label>
                   <div className="mt-1 flex rounded-2xl shadow-sm">
                     <span className="hidden items-center rounded-l-2xl border-2 border-r-0 border-slate-300 bg-gray-50 px-3 text-base text-gray-500 md:inline-flex">
