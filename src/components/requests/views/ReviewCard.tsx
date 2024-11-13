@@ -16,9 +16,9 @@ const ReviewCard = () => {
 
   const savetoDb = async () => {
     setIsSubmitting(true);
-    const sanitizedDownloadUrls = userData.downloadUrls
-      ? userData.downloadUrls.filter((url: undefined) => url !== undefined)
-      : [];
+    // const sanitizedDownloadUrls = userData.downloadUrls
+    //   ? userData.downloadUrls.filter((url: undefined) => url !== undefined)
+    //   : [];
 
     try {
       const docRef = await addDoc(collection(db, "submissions"), {
@@ -30,8 +30,8 @@ const ReviewCard = () => {
             ? userData.other_sector_focus
             : userData.sector_focus,
         matched: false,
-        // resources: userData.downloadUrls,
-        resources: sanitizedDownloadUrls,
+        resources: userData.downloadUrls,
+        // resources: sanitizedDownloadUrls,
         researcher_id: user?.id,
         estimated_cost: userData.amount,
         timestamp: serverTimestamp(),
